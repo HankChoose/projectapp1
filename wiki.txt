@@ -1,0 +1,100 @@
+
+To implement the Wiki encyclopedia, you can follow the steps below:
+
+Create a directory called wiki in the same directory as your manage.py file. Inside this directory, create the following files:
+
+views.py: This file will contain the functions that render the views.
+urls.py: This file will contain the URL patterns for the views.
+templates: This directory will contain the HTML templates.
+entries: This directory will contain the Markdown files for the entries.
+Install the markdown2 package by running the command pip3 install markdown2.
+
+from django.db import models
+
+class Entry(models.Model):
+    title = models.CharField(max_length=255, unique=True)
+    content = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+
+Define a function in utils.py that loads the Markdown content of a given entry file and converts it to HTML using markdown2. For example:
+import markdown2
+from django.shortcuts import render
+from .models import Entry
+
+def get_entry(title):
+    try:
+        entry = Entry.objects.get(title=title)
+        content = markdown2.markdown(entry.content)
+        return render(request, "encyclopedia/entry.html", {
+            "title": entry.title,
+            "content": content
+        })
+    except Entry.DoesNotExist:
+        return render(request, "encyclopedia/error.html", {
+            "message": "The requested page was not found."
+        })
+
+Define a function in views.py for each of the required views. For example:
+
+from django.shortcuts import render
+from .utils import get_entry
+
+def index(request):
+    return render(request, "encyclopedia/index.html", {
+        "entries": Entry.objects.all()
+    })
+
+def entry(request, title):
+    return get_entry(title)
+
+def search(request):
+    query = request.GET.get("q")
+    entries = Entry.objects.filter(title__contains=query)
+    return render(request, "encyclopedia/search.html", {
+        "entries": entries
+    })
+
+def new(request):
+    if request.method == "POST":
+        title = request.POST["title"]
+        content = request.POST["content"]
+        try:
+            entry = Entry.objects.create(title=title, content=content)
+            return get_entry(entry.title)
+        except IntegrityError:
+            return render(request, "encyclopedia/new.html", {
+                "message": "An entry with this title already exists."
+            })
+    return render(request, "encyclopedia/new.html")
+
+def edit(request, title):
+    if request.method == "POST":
+        entry = Entry.objects.get(title=title)
+        entry.content = request.POST["content"]
+        entry.save()
+        return get_entry(entry.title)
+    else:
+        entry = Entry.objects.get(title=title)
+        return render(request, "encyclopedia/edit.html", {
+            "title": entry.title,
+            "content": entry.content
+        })
+
+def random(request):
+    entry = random.choice(Entry.objects.all())
+    return get_entry(entry.title)
+
+Define the URL patterns for the views in urls.py. For example:
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("", views.index, name="index"),
+    path("wiki/<str:title>", views.entry, name="entry"),
+    path("search", views.search, name="search"),
+    path("new", views.new, name="new"),
+    path("edit/<str:title>", views.edit, name="edit"),
+    path("random", views.random, name="random")

@@ -1,0 +1,41 @@
+version: '3'
+services:
+  wiki:
+    build: 
+      context: ./wiki
+      dockerfile: Dockerfile
+      #target: development   name as form Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./wiki:/wiki
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_NAME=mydb
+      - DB_USER=myuser
+      - DB_PASSWORD=mypw
+    networks:
+      - app-network
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: mydatabaseuser
+      MYSQL_PASSWORD: mydatabasepassword
+      MYSQL_ROOT_PASSWORD: myrootpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+volumes:
+  dbdata:
