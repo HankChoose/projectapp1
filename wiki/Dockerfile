@@ -15,8 +15,6 @@ RUN pip install virtualenv
 RUN virtualenv venv
 #RUN source venv/bin/activate
 RUN . venv/bin/activate
-
-RUN venv\Scripts\activate
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip3 install markdown2
 # Copy to wiki folder
