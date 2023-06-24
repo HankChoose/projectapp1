@@ -15,7 +15,7 @@ RUN pip install virtualenv
 RUN virtualenv venv
 #RUN source venv/bin/activate
 RUN . venv/bin/activate
-RUNpip install django-debug-toolbar==3.2.2
+RUN pip install django-debug-toolbar==3.2.2
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip3 install markdown2
 # Copy to wiki folder
