@@ -11,8 +11,7 @@ ADD requirements.txt /wiki/
 
 
 # Install Python dependency
-RUN pip install -r requirements.txt
-RUN pip install django-debug-toolbar==3.2.2
+RUN pip install --no-cache-dir -r requirements.txt
 RUN pip3 install markdown2
 # Copy to wiki folder
 COPY . /wiki/
