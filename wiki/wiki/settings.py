@@ -28,6 +28,13 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+# Set the secure proxy header
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Set the secure cookie flag
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
 
 # Application definition
 
