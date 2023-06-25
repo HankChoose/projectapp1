@@ -23,8 +23,8 @@ RUN apt-get update && apt-get install -y nginx
 # Copy to wiki folder
 COPY . /wiki/
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY /etc/letsencrypt/mycerts/fullchain.pem /etc/nginx/ssl/server.crt
-COPY /etc/letsencrypt/mycerts/privkey.pem /etc/nginx/ssl/server.key
+COPY mycerts/fullchain.pem /etc/nginx/ssl/server.crt
+COPY mycerts/privkey.pem /etc/nginx/ssl/server.key
 
 # Run application
 #CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
