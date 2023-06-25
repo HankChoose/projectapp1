@@ -24,9 +24,12 @@ SECRET_KEY = '%710m*zic)#0u((qugw#1@e^ty!c)9j04956v@ly(_86n$rg)h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
+#确保settings.py中的DEBUG设置为False，以禁用调试模式
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['zhiyouyuea.com']
+
 
 # Set the secure proxy header
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -47,7 +50,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "sslserver",
     'debug_toolbar',
 ]
 
