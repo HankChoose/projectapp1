@@ -16,10 +16,12 @@ def index(request):
     context = {
         'STATIC_ROOT': settings.STATIC_ROOT,
         'STATIC_URL': settings.STATIC_URL,
+        'STATICFILES_DIRS': settings.STATICFILES_DIRS,    
     }
     
     static_root1 = settings.STATIC_ROOT
     static_url = settings.STATIC_URL
+    static_dirs = settings.STATICFILES_DIRS
     return render(request, 'encyclopedia/index.html', context)
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries()
