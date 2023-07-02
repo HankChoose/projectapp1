@@ -147,8 +147,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '/wiki/encyclopedia/static')
-#STATIC_ROOT = BASE_DIR
+STATICFILES_DIRS=(os.path.join('static'))
+STATIC_ROOT = ''
+#STATIC_ROOT = os.path.join(BASE_DIR, '/wiki/encyclopedia/static')
 #STATIC_ROOT = os.path.join(BASE_DIR, '/encyclopedia/static/')
 
 INTERNAL_IPS = [
