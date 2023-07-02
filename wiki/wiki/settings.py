@@ -30,7 +30,6 @@ DEBUG = False
 #ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS = ['zhiyouyuea.com']
 
-
 # Set the secure proxy header
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -38,7 +37,6 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = True
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
