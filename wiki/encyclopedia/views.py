@@ -3,6 +3,7 @@ from django.shortcuts import HttpResponseRedirect, reverse
 from django.shortcuts import render
 from . import util
 from django import forms
+from django.conf import settings
 
 from django.http import JsonResponse
 
@@ -12,7 +13,14 @@ def index(request):
     #my_list = util.list_entries()
     #search_string = ["h"]
     #new_list = [item for item in my_list if any(char.lower() in item.lower() for char in search_string)]
-    return render(request, "encyclopedia/index.html", {
+    context = {
+        'STATIC_ROOT': settings.STATIC_ROOT,
+        'STATIC_URL': settings.STATIC_URL,
+    }
+    
+    static_root1 = settings.STATIC_ROOT
+    static_url = settings.STATIC_URL
+    return render(request, "encyclopedia/index.html", context, {
         "entries": util.list_entries()
         #"entries": request.session["entries"]
     

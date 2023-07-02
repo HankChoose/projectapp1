@@ -11,6 +11,12 @@
 {% block body %}
    <h1>Edit Entry</h1>
 
+   {% load static %}
+   aaaaa
+   <br>
+   <p>STATIC_ROOT: {{ STATIC_ROOT }}</p>
+   <p>STATIC_URL: {{ STATIC_URL }}</p>
+   {% static 'hank3'%}<br>
 
 <form action="{% url 'encyclopedia:entryedit' entryEditFrom.editEentryTitle.value %}" method="post">
     {% csrf_token %}
