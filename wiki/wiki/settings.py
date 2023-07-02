@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+ROOT_PATH=os.path.dirname(__file__)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -147,11 +149,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-STATIC_ROOT ='/wiki/encyclopedia/static'
-
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+STATIC_ROOT = os.path.join(ROOT_PATH,'static/')
+#STATIC_ROOT ='/wiki/encyclopedia/static'
 #STATIC_ROOT = os.path.join(BASE_DIR, '/wiki/encyclopedia/static')
 #STATIC_ROOT = os.path.join(BASE_DIR, '/encyclopedia/static/')
 
