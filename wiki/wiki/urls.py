@@ -25,10 +25,9 @@ urlpatterns = [
     path('', include("encyclopedia.urls")),
     path('__debug__/', include(debug_toolbar.urls))
 ]
-'''
+
 # 配置静态文件 URL
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # 启用静态文件目录浏览
 urlpatterns += staticfiles_urlpatterns()
-'''
