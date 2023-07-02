@@ -148,7 +148,7 @@ USE_TZ = True
 
 STATIC_URL = '/wiki/static/'
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_ROOT = '/wiki/static/'
+#STATIC_ROOT = '/wiki/static/'
 
 '''
 STATICFILES_DIRS = [
