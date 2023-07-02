@@ -20,7 +20,8 @@ def index(request):
     
     static_root1 = settings.STATIC_ROOT
     static_url = settings.STATIC_URL
-    return render(request, "encyclopedia/index.html",context, {
+    return render(request, 'encyclopedia/index.html', context)
+    return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries()
         #"entries": request.session["entries"]
     

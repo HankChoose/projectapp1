@@ -10,6 +10,12 @@
 
 {% block body %}
     <h1>All Pages</h1>
+    {% load static %}
+	eeeeeeeee
+	<br>
+	<p>STATIC_ROOT: {{ STATIC_ROOT }}</p>
+    <p>STATIC_URL: {{ STATIC_URL }}</p>
+	{% static 'hank3'%}<br>
     <ul id="list-container">
         {% for entry in entries %}
              <li><a href="wiki/{{ entry }}">{{ entry }}</a></li>
