@@ -9,7 +9,6 @@ services:
     #command: python manage.py collectstatic
     volumes:
       - ./wiki:/wiki
-      - nginx_html:/wiki/static
     ports:
       - "8000:8000"
     networks:
@@ -22,7 +21,7 @@ services:
     volumes:
       - ./ssl:/etc/nginx/ssl
       - ./wiki/nginx.conf:/etc/nginx/nginx.conf
-      - nginx_html:/wiki/static
+      - shared_volume:/etc/nginx/html/static
     depends_on:
       - wiki
     networks:
@@ -32,4 +31,4 @@ networks:
   app-network:
     driver: bridge
 volumes:
-  nginx_html:
+  shared_volume:
