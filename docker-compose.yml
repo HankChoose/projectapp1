@@ -22,7 +22,7 @@ services:
     volumes:
       - ./ssl:/etc/nginx/ssl
       - ./wiki/nginx.conf:/etc/nginx/nginx.conf
-      - static_files:/usr/share/nginx/html
+      - static_files:/etc/nginx/html
     depends_on:
       - wiki
     networks:
