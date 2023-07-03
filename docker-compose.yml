@@ -9,7 +9,7 @@ services:
     #command: python manage.py collectstatic
     volumes:
       - ./wiki:/wiki
-      - static_files:/wiki/encyclopedia
+      - static_files:/wiki/staticfiles
     ports:
       - "8000:8000"
     networks:
