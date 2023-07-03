@@ -20,21 +20,7 @@ services:
       - DB_PASSWORD=mypw
     networks:
       - app-network
-  db:
-    image: mysql:latest
-    restart: always
-    environment:
-      MYSQL_DATABASE: mydatabase
-      MYSQL_USER: mydatabaseuser
-      MYSQL_PASSWORD: mydatabasepassword
-      MYSQL_ROOT_PASSWORD: myrootpassword
-    ports:
-      - "3306:3306"
-    volumes:
-      - dbdata:/var/lib/mysql
-    networks:
-      - app-network
-      
+  
   nginx:
     image: nginx
     ports:
