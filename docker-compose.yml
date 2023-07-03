@@ -5,8 +5,8 @@ services:
       context: ./wiki
       dockerfile: Dockerfile
       #target: development   name as form Dockerfile
-    #command: python manage.py runserver 0.0.0.0:8000
-    command: python manage.py collectstatic
+    command: python manage.py runserver 0.0.0.0:8000
+    #command: python manage.py collectstatic
     volumes:
       - ./wiki:/wiki
     ports:
