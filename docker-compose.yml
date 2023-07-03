@@ -9,7 +9,7 @@ services:
     #command: python manage.py collectstatic
     volumes:
       - ./wiki:/wiki
-      - nginx_html:/wiki/encyclopedia
+      - nginx_html:/wiki/staticfiles
     ports:
       - "8000:8000"
     networks:
