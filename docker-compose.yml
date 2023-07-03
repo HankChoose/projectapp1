@@ -8,7 +8,8 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     #command: python manage.py collectstatic
     volumes:
-      - app-data:/wiki
+      - ./wiki:/wiki
+      - static_files:/wiki/static
     ports:
       - "8000:8000"
     networks:
@@ -21,6 +22,7 @@ services:
     volumes:
       - ./ssl:/etc/nginx/ssl
       - ./wiki/nginx.conf:/etc/nginx/nginx.conf
+      - static_files:/usr/share/nginx/html
 
     depends_on:
       - wiki
@@ -31,4 +33,4 @@ networks:
   app-network:
     driver: bridge
 volumes:
-  app-data:
+  static_files:
