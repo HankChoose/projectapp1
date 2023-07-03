@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 app_name='encyclopedia'
 #<a href="{% url 'encyclopedia:index' %}">View Index</a>
@@ -14,4 +15,6 @@ urlpatterns = [
     path("wiki/<str:title>/edit/", views.entryedit, name="entryedit"),
     path("entryadd", views.entryadd, name="entryadd"),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
 
