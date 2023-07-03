@@ -11,16 +11,8 @@ services:
       - ./wiki:/wiki
     ports:
       - "8000:8000"
-    depends_on:
-      - db
-    environment:
-      - DB_HOST=db
-      - DB_NAME=mydb
-      - DB_USER=myuser
-      - DB_PASSWORD=mypw
     networks:
       - app-network
-  
   nginx:
     image: nginx
     ports:
