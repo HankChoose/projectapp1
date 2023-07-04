@@ -26,7 +26,7 @@ urlpatterns = [
     path('__debug__/', include(debug_toolbar.urls))
 ]
 
-urlpatterns += staticfiles_urlpatterns()
+#urlpatterns += staticfiles_urlpatterns()
 
 '''
 # 配置静态文件 URL
